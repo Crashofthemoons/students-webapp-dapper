@@ -15,10 +15,12 @@ using Workforce.Models.ViewModels;
 using System.Data.SqlClient;
 
 namespace Workforce.Controllers {
-    public class StudentController : Controller {
+    public class StudentController : Controller
+    {
         private readonly IConfiguration _config;
 
-        public StudentController (IConfiguration config) {
+        public StudentController (IConfiguration config)
+        {
             _config = config;
         }
 
@@ -117,10 +119,10 @@ namespace Workforce.Controllers {
             if (ModelState.IsValid) {
                 string sql = $@"
                     INSERT INTO Student
-                        ( Id, FirstName, LastName, SlackHandle, CohortId )
+                        ( FirstName, LastName, SlackHandle, CohortId )
                         VALUES
-                        ( null
-                            , '{student.FirstName}'
+                        (
+                            '{student.FirstName}'
                             , '{student.LastName}'
                             , '{student.SlackHandle}'
                             , {student.CohortId}
